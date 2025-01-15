@@ -219,8 +219,8 @@ test_set_features <- read_csv(
     employment_status = col_character(),
     hhs_geo_region = col_character(),
     census_msa = col_character(),
-    household_adults = col_integer(),
-    household_children = col_integer(),
+    household_adults = col_character(),
+    household_children = col_character(),
     employment_industry = col_character(),
     employment_occupation = col_character()
 ))
@@ -1088,6 +1088,82 @@ levels(test_set_features$census_msa)
 
 ------------------------------------------------------------------------
 
+##### `household_adults`
+
+`household_adults` - Number of *other* adults in household, top-coded to 3.
+
+```{r}
+household_adults_levels <- 
+  test_set_features |>
+  distinct(
+    household_adults
+  ) |>
+  unlist() |>
+  na.omit()
+```
+
+It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
+
+```{r}
+test_set_features <- 
+  test_set_features |>
+  mutate(
+    household_adults =
+           fct(
+              household_adults,  
+              levels = household_adults_levels
+  )) 
+```
+
+Check works:
+
+```{r}
+test_set_features |>
+  count(household_adults)
+
+levels(test_set_features$household_adults)
+```
+
+------------------------------------------------------------------------
+
+##### `household_children`
+
+`household_children` - Number of children in household, top-coded to 3.
+
+```{r}
+household_children_levels <- 
+  test_set_features |>
+  distinct(
+    household_children
+  ) |>
+  unlist() |>
+  na.omit()
+```
+
+It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
+
+```{r}
+test_set_features <- 
+  test_set_features |>
+  mutate(
+    household_children =
+           fct(
+              household_children,  
+              levels = household_children_levels
+  )) 
+```
+
+Check works:
+
+```{r}
+test_set_features |>
+  count(household_children)
+
+levels(test_set_features$household_children)
+```
+
+------------------------------------------------------------------------
+
 ##### `employment_industry`
 
 `employment_industry` - Type of industry respondent is employed in. Values are represented as short random character strings.
@@ -1245,8 +1321,8 @@ training_set_features <- read_csv(
     employment_status = col_character(),
     hhs_geo_region = col_character(),
     census_msa = col_character(),
-    household_adults = col_integer(),
-    household_children = col_integer(),
+    household_adults = col_character(),
+    household_children = col_character(),
     employment_industry = col_character(),
     employment_occupation = col_character()
 ))
@@ -2085,6 +2161,82 @@ training_set_features |>
   count(census_msa)
 
 levels(training_set_features$census_msa)
+```
+
+------------------------------------------------------------------------
+
+##### `household_adults`
+
+`household_adults` - Number of *other* adults in household, top-coded to 3.
+
+```{r}
+household_adults_levels <- 
+  training_set_features |>
+  distinct(
+    household_adults
+  ) |>
+  unlist() |>
+  na.omit()
+```
+
+It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
+
+```{r}
+training_set_features <- 
+  training_set_features |>
+  mutate(
+    household_adults =
+           fct(
+              household_adults,  
+              levels = household_adults_levels
+  )) 
+```
+
+Check works:
+
+```{r}
+training_set_features |>
+  count(household_adults)
+
+levels(training_set_features$household_adults)
+```
+
+------------------------------------------------------------------------
+
+##### `household_children`
+
+`household_children` - Number of children in household, top-coded to 3.
+
+```{r}
+household_children_levels <- 
+  training_set_features |>
+  distinct(
+    household_children
+  ) |>
+  unlist() |>
+  na.omit()
+```
+
+It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
+
+```{r}
+training_set_features <- 
+  training_set_features |>
+  mutate(
+    household_children =
+           fct(
+              household_children,  
+              levels = household_children_levels
+  )) 
+```
+
+Check works:
+
+```{r}
+training_set_features |>
+  count(household_children)
+
+levels(training_set_features$household_children)
 ```
 
 ------------------------------------------------------------------------

@@ -119,7 +119,7 @@ ggplot(training_set_pq, aes(x = behavioral_antiviral_meds)) +
 ```
 
 ### `behavioral_avoidance`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_avoidance)) +
   geom_bar(aes(fill = behavioral_avoidance)) +
@@ -132,7 +132,7 @@ ggplot(training_set_pq, aes(x = behavioral_avoidance)) +
 ```
 
 ### `behavioral_face_mask`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_face_mask)) +
   geom_bar(aes(fill = behavioral_face_mask)) +
@@ -145,7 +145,7 @@ ggplot(training_set_pq, aes(x = behavioral_face_mask)) +
 ```
 
 ### `behavioral_wash_hands`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_wash_hands)) +
   geom_bar(aes(fill = behavioral_wash_hands)) +
@@ -158,7 +158,7 @@ ggplot(training_set_pq, aes(x = behavioral_wash_hands)) +
 ```
 
 ### `behavioral_large_gatherings`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_large_gatherings)) +
   geom_bar(aes(fill = behavioral_large_gatherings)) +
@@ -171,7 +171,7 @@ ggplot(training_set_pq, aes(x = behavioral_large_gatherings)) +
 ```
 
 ### `behavioral_outside_home`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_outside_home)) +
   geom_bar(aes(fill = behavioral_outside_home)) +
@@ -184,7 +184,7 @@ ggplot(training_set_pq, aes(x = behavioral_outside_home)) +
 ```
 
 ### `behavioral_touch_face`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = behavioral_touch_face)) +
   geom_bar(aes(fill = behavioral_touch_face)) +
@@ -197,7 +197,7 @@ ggplot(training_set_pq, aes(x = behavioral_touch_face)) +
 ```
 
 ### `doctor_recc_h1n1`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = doctor_recc_h1n1)) +
   geom_bar(aes(fill = doctor_recc_h1n1)) +
@@ -210,7 +210,7 @@ ggplot(training_set_pq, aes(x = doctor_recc_h1n1)) +
 ```
 
 ### `doctor_recc_seasonal`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = doctor_recc_seasonal)) +
   geom_bar(aes(fill = doctor_recc_seasonal)) +
@@ -223,7 +223,7 @@ ggplot(training_set_pq, aes(x = doctor_recc_seasonal)) +
 ```
 
 ### `chronic_med_condition`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = chronic_med_condition)) +
   geom_bar(aes(fill = chronic_med_condition)) +
@@ -237,7 +237,7 @@ ggplot(training_set_pq, aes(x = chronic_med_condition)) +
 ```
 
 ### `child_under_6_months`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = child_under_6_months)) +
   geom_bar(aes(fill = child_under_6_months)) +
@@ -250,7 +250,7 @@ ggplot(training_set_pq, aes(x = child_under_6_months)) +
 ```
 
 ### `health_worker`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = health_worker)) +
   geom_bar(aes(fill = health_worker)) +
@@ -263,7 +263,7 @@ ggplot(training_set_pq, aes(x = health_worker)) +
 ```
 
 ### `health_insurance`
- 
+
 ```{r}
 ggplot(training_set_pq, aes(x = health_insurance)) +
   geom_bar(aes(fill = health_insurance)) +
@@ -274,3 +274,288 @@ ggplot(training_set_pq, aes(x = health_insurance)) +
   ) +
   scale_color_colorblind()
 ```
+
+### `opinion_h1n1_risk`
+
+```{r}
+ggplot(training_set_pq, aes(x = opinion_h1n1_risk)) +
+  geom_bar(aes(fill = opinion_h1n1_risk)) +
+  labs(
+    title = "Respondent's opinion about risk of getting sick with H1N1 flu without vaccine.",
+    subtitle = "Visualization the distribution of opinion_h1n1_risk feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `opinion_h1n1_sick_from_vacc`
+
+```{r}
+ggplot(training_set_pq, aes(x = opinion_h1n1_sick_from_vacc)) +
+  geom_bar(aes(fill = opinion_h1n1_sick_from_vacc)) +
+  labs(
+    title = "Respondent's worry of getting sick from taking H1N1 vaccine.",
+    subtitle = "Visualization the distribution of opinion_h1n1_sick_from_vacc feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `opinion_seas_vacc_effective`
+
+```{r}
+ggplot(training_set_pq, aes(x = opinion_seas_vacc_effective)) +
+  geom_bar(aes(fill = opinion_seas_vacc_effective)) +
+  labs(
+    title = "Respondent's opinion about seasonal flu vaccine effectiveness.",
+    subtitle = "Visualization the distribution of opinion_seas_vacc_effective feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `opinion_seas_risk`
+
+```{r}
+ggplot(training_set_pq, aes(x = opinion_seas_risk)) +
+  geom_bar(aes(fill = opinion_seas_risk)) +
+  labs(
+    title = "Respondent's opinion about risk of getting sick with seasonal flu without vaccine.",
+    subtitle = "Visualization the distribution of opinion_seas_risk feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `opinion_seas_sick_from_vacc`
+
+```{r}
+ggplot(training_set_pq, aes(x = opinion_seas_sick_from_vacc)) +
+  geom_bar(aes(fill = opinion_seas_sick_from_vacc)) +
+  labs(
+    title = "Respondent's worry of getting sick from taking seasonal flu vaccine.",
+    subtitle = "Visualization the distribution of opinion_seas_sick_from_vacc feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `age_group`
+
+```{r}
+ggplot(training_set_pq, aes(x = age_group)) +
+  geom_bar(aes(fill = age_group)) +
+  labs(
+    title = "Age group of respondent.",
+    subtitle = "Visualization the distribution of age_group feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `education`
+
+```{r}
+ggplot(training_set_pq, aes(x = education)) +
+  geom_bar(aes(fill = education)) +
+  labs(
+    title = "Self-reported education level.",
+    subtitle = "Visualization the distribution of education feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `race`
+
+```{r}
+ggplot(training_set_pq, aes(x = race)) +
+  geom_bar(aes(fill = race)) +
+  labs(
+    title = "Race of respondent.",
+    subtitle = "Visualization the distribution of race feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+There is a huge skew for 'white'.
+
+### `sex`
+
+```{r}
+ggplot(training_set_pq, aes(x = sex)) +
+  geom_bar(aes(fill = sex)) +
+  labs(
+    title = "Sex of respondent.",
+    subtitle = "Visualization the distribution of sex feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `income_poverty`
+
+```{r}
+ggplot(training_set_pq, aes(x = income_poverty)) +
+  geom_bar(aes(fill = income_poverty)) +
+  labs(
+    title = "Household annual income of respondent with respect to 2008 Census poverty thresholds.",
+    subtitle = "Visualization the distribution of income_poverty feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `marital_status`
+
+```{r}
+ggplot(training_set_pq, aes(x = marital_status)) +
+  geom_bar(aes(fill = marital_status)) +
+  labs(
+    title = "Marital status of respondent.",
+    subtitle = "Visualization the distribution of marital_status feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `rent_or_own`
+
+```{r}
+ggplot(training_set_pq, aes(x = rent_or_own)) +
+  geom_bar(aes(fill = rent_or_own)) +
+  labs(
+    title = "Housing situation of respondent.",
+    subtitle = "Visualization the distribution of rent_or_own feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `employment_status`
+
+```{r}
+ggplot(training_set_pq, aes(x = employment_status)) +
+  geom_bar(aes(fill = employment_status)) +
+  labs(
+    title = "Employment status of respondent.",
+    subtitle = "Visualization the distribution of employment_status feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `hhs_geo_region`
+
+```{r}
+ggplot(training_set_pq, aes(x = hhs_geo_region)) +
+  geom_bar(aes(fill = hhs_geo_region)) +
+  labs(
+    title = "Visualization the distribution of hhs_geo_region feature",
+    subtitle = "Respondent's residence using a 10-region geographic classification defined by \nthe U.S. Dept. of Health and Human Services. \nValues are represented as short random character strings.",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `census_msa`
+
+```{r}
+ggplot(training_set_pq, aes(x = census_msa)) +
+  geom_bar(aes(fill = census_msa)) +
+  labs(
+    title = "Respondent's residence within metropolitan statistical areas (MSA) \nas defined by the U.S. Census.",
+    subtitle = "Visualization the distribution of census_msa feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `household_adults`
+
+```{r}
+ggplot(training_set_pq, aes(x = household_adults)) +
+  geom_bar(aes(fill = household_adults)) +
+  labs(
+    title = "Number of other adults in household, top-coded to 3.",
+    subtitle = "Visualization the distribution of household_adults feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `household_children`
+
+```{r}
+ggplot(training_set_pq, aes(x = household_children)) +
+  geom_bar(aes(fill = household_children)) +
+  labs(
+    title = "Number of other children in household, top-coded to 3.",
+    subtitle = "Visualization the distribution of household_children feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `employment_industry`
+
+```{r}
+ggplot(training_set_pq, aes(x = employment_industry)) +
+  geom_bar(aes(fill = employment_industry)) +
+  labs(
+    title = "Type of industry respondent is employed in. Values are represented as short random character strings.",
+    subtitle = "Visualization the distribution of employment_industry feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+```{r}
+training_set_features_pq |> 
+  count(employment_industry)
+
+13330/nrow(training_set_features_pq)
+```
+
+About 50% of the respondents did not report and/or are missing `employment_industry`. Not sure how good this variable/feature is for predictive model.
+
+### `employment_occupation`
+
+```{r}
+ggplot(training_set_pq, aes(x = employment_occupation)) +
+  geom_bar(aes(fill = employment_occupation)) +
+  labs(
+    title = "Type of occupation of respondent. Values are represented as short random character strings.",
+    subtitle = "Visualization the distribution of employment_occupation feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+```{r}
+training_set_features_pq |> 
+  count(employment_occupation)
+
+13470/nrow(training_set_features_pq)
+```
+
+50% of the respondents did not report and/or are missing `employment_occupation`. Not sure how good this variable/feature is for predictive model.
