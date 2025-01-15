@@ -23,8 +23,6 @@ set.seed(123)
 library(tidyverse)
 ```
 
-------------------------------------------------------------------------
-
 ## Import
 
 ```{r}
@@ -254,7 +252,6 @@ test_set_features |>
 ```
 
 24 possible values in a dataset with 26,708 rows (including header). Factor is okay.
-
 
 #### Set up some factor levels for categorical variables:
 
@@ -2105,6 +2102,7 @@ employment_industry_levels <-
   unlist() |>
   na.omit()
 ```
+
 It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
 
 ```{r}
@@ -2144,7 +2142,6 @@ employment_occupation_levels <-
 ```
 
 It's best practice to not have `NA` as a factor level. The parquet file format will not work if there is a `NA` level in a factor.
-
 
 ```{r}
 training_set_features <- 
@@ -2186,7 +2183,7 @@ training_set_labels |>
 
 Good, there are none so `respondent_id` uniquely identifies rows in both data sets.
 
-### Check if there are missing value for keys 
+### Check if there are missing value for keys
 
 ```{r}
 training_set_features |>
@@ -2198,7 +2195,7 @@ training_set_labels |>
 
 Good, there are no rows with missing primary keys. We can identify each rows/observations in both data set.
 
-### Join the dataset with an Inner Join 
+### Join the dataset with an Inner Join
 
 ```{r}
 training_set <-
@@ -2208,7 +2205,7 @@ training_set <-
 
 ------------------------------------------------------------------------
 
-# Storing the cleaned datasets 
+# Storing the cleaned datasets
 
 I'm going to store it in a better data format than CSV.
 
@@ -2234,8 +2231,8 @@ test_set_features |>
 submission_format |>
   glimpse()
 ```
-## Storing in Parquet file format 
 
+## Storing in Parquet file format
 
 ### `training_set_labels`
 

@@ -1,0 +1,276 @@
+---
+title: "Data Visualization"
+author: "Quoc Anthony Doan"
+format: 
+  html:
+    toc: true
+    toc-depth: 5
+editor: visual
+---
+
+## Setup
+
+### Set the Seed for reproducibility
+
+```{r}
+set.seed(123)
+```
+
+### library
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(arrow)
+```
+
+## Data
+
+### Import
+
+#### Paths
+
+```{r}
+mainDir <- 'data/cleaned_data'
+
+subDir <- 'training_set_labels'
+training_set_labels_path <- file.path(mainDir, subDir)
+
+
+subDir <- 'training_set_features'
+training_set_features_path <- file.path(mainDir, subDir)
+
+subDir <- 'training_set'
+training_set_path <- file.path(mainDir, subDir) 
+
+subDir <- 'submission_format'
+submission_format_path <- file.path(mainDir, subDir) 
+
+subDir <- 'test_set_features'
+test_set_features_path <- file.path(mainDir, subDir) 
+```
+
+#### Datasets
+
+```{r}
+training_set_labels_pq <- 
+  read_parquet(
+    paste(training_set_labels_path,"part-0.parquet", sep = "/"))
+training_set_features_pq <- 
+  read_parquet(
+    paste(training_set_features_path,"part-0.parquet", sep = "/"))
+training_set_pq <- 
+  read_parquet(
+    paste(training_set_path,"part-0.parquet", sep = "/"))
+submission_format_pq <- 
+  read_parquet(
+    paste(submission_format_path,"part-0.parquet", sep = "/"))
+test_set_features_pq <- 
+  read_parquet(
+    paste(test_set_features_path,"part-0.parquet", sep = "/"))
+```
+
+## Visualizing Distributions (univariate visualization)
+
+Let's get a sense of the distribution of the data.
+
+### Variables / Features
+
+### `h1n1_concern`
+
+```{r}
+ggplot(training_set_pq, aes(x = h1n1_concern)) +
+  geom_bar(aes(fill = h1n1_concern)) +
+  labs(
+    title = "Level of concern about the H1N1 flu",
+    subtitle = "Visualization the distribution of h1n1_concern feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `h1n1_knowledge`
+
+```{r}
+ggplot(training_set_pq, aes(x = h1n1_knowledge)) +
+  geom_bar(aes(fill = h1n1_knowledge)) +
+  labs(
+    title = "Level of knowledge about H1N1 flu",
+    subtitle = "Visualization the distribution of h1n1_knowledge feature",
+    x = "levels"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `behavioral_antiviral_meds`
+
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_antiviral_meds)) +
+  geom_bar(aes(fill = behavioral_antiviral_meds)) +
+  labs(
+    title = "Has taken antiviral medications (binary)",
+    subtitle = "Visualization the distribution of behavioral_antiviral_meds feature",
+    x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_avoidance`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_avoidance)) +
+  geom_bar(aes(fill = behavioral_avoidance)) +
+  labs(
+   title = "Has avoided close contact with others with flu-like symptoms. (binary)",
+   subtitle = "Visualization the distribution of behavioral_avoidance feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_face_mask`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_face_mask)) +
+  geom_bar(aes(fill = behavioral_face_mask)) +
+  labs(
+   title = "Has bought a face mask. (binary)",
+   subtitle = "Visualization the distribution of behavioral_face_mask feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_wash_hands`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_wash_hands)) +
+  geom_bar(aes(fill = behavioral_wash_hands)) +
+  labs(
+   title = "Has frequently washed hands or used hand sanitizer. (binary)",
+   subtitle = "Visualization the distribution of behavioral_wash_hands feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_large_gatherings`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_large_gatherings)) +
+  geom_bar(aes(fill = behavioral_large_gatherings)) +
+  labs(
+   title = "Has reduced time at large gatherings. (binary)",
+   subtitle = "Visualization the distribution of behavioral_large_gatherings feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_outside_home`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_outside_home)) +
+  geom_bar(aes(fill = behavioral_outside_home)) +
+  labs(
+   title = "Has reduced contact with people outside of own household. (binary)",
+   subtitle = "Visualization the distribution of behavioral_outside_home feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `behavioral_touch_face`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = behavioral_touch_face)) +
+  geom_bar(aes(fill = behavioral_touch_face)) +
+  labs(
+   title = "Has avoided touching eyes, nose, or mouth. (binary)",
+   subtitle = "Visualization the distribution of behavioral_touch_face feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `doctor_recc_h1n1`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = doctor_recc_h1n1)) +
+  geom_bar(aes(fill = doctor_recc_h1n1)) +
+  labs(
+   title = "H1N1 flu vaccine was recommended by doctor. (binary)",
+   subtitle = "Visualization the distribution of doctor_recc_h1n1 feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `doctor_recc_seasonal`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = doctor_recc_seasonal)) +
+  geom_bar(aes(fill = doctor_recc_seasonal)) +
+  labs(
+   title = "Seasonal flu vaccine was recommended by doctor. (binary)",
+   subtitle = "Visualization the distribution of doctor_recc_seasonal feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `chronic_med_condition`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = chronic_med_condition)) +
+  geom_bar(aes(fill = chronic_med_condition)) +
+  labs(
+   title = "Visualization the distribution of chronic_med_condition feature",
+   subtitle = "Has any of the following chronic medical conditions: \nasthma or an other lung condition, diabetes, a heart condition, a kidney condition, \nsickle cell anemia or other anemia, a neurological or neuromuscular condition, \na liver condition, or a weakened immune system caused by a chronic illness \nor by medicines taken for a chronic illness. (binary)",
+   x = "False / True"
+  ) +
+  theme(axis.text.x = element_text(vjust = 0.5, hjust = 1)) +
+  scale_color_colorblind()
+```
+
+### `child_under_6_months`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = child_under_6_months)) +
+  geom_bar(aes(fill = child_under_6_months)) +
+  labs(
+   title = "Has regular close contact with a child under the age of six months. (binary)",
+   subtitle = "Visualization the distribution of child_under_6_months feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `health_worker`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = health_worker)) +
+  geom_bar(aes(fill = health_worker)) +
+  labs(
+   title = "Is a healthcare worker. (binary)",
+   subtitle = "Visualization the distribution of health_worker feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
+
+### `health_insurance`
+ 
+```{r}
+ggplot(training_set_pq, aes(x = health_insurance)) +
+  geom_bar(aes(fill = health_insurance)) +
+  labs(
+   title = "Has health insurance. (binary)",
+   subtitle = "Visualization the distribution of health_insurance feature",
+   x = "False / True"
+  ) +
+  scale_color_colorblind()
+```
